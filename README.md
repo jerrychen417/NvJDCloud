@@ -19,7 +19,7 @@ https://github.com/ufuckee/jd_cookie
 运行脚本，按提示输入自己的参数即可
 
 ```
-bash <(curl -sL https://git.io/JXpK0)
+bash <(curl -sL https://git.io/JMWTL)
 ```
 
 # 1.2及之后版本安装
