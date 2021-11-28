@@ -204,7 +204,6 @@ wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-
 
 ```
 docker logs -f nvjdc 
-
 ```
 
 出现 NETJDC  started 即可
@@ -243,7 +242,7 @@ Config.json 是配置文件 可以热更新 修改后不用重启容器
 原作 Nolanhzy
 https://hub.docker.com/r/nolanhzy/nvjdc
 
-备份 aaronyyds
+备份 clearloves
 https://hub.docker.com/r/clearloves/nvjdc
 
 
