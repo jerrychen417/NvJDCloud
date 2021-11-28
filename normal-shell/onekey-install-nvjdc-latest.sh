@@ -146,7 +146,11 @@ echo -e "
 —————————————————————————————————————————————————————————————
         Nvjdc自助面板一键安装脚本                         
  ${green}                
+        脚本托管地址：https://git.io/JP7D5
+
         Powered  by 翔翎   
+
+        京豆羊毛脚本仓库监控频道：${plain}${red}https://t.me/farmercoin${plain}   
 —————————————————————————————————————————————————————————————
 "
 }
@@ -156,15 +160,19 @@ exit
 
 install_nvjdc(){
 echo -e "${red}开始进行安装,请根据命令提示操作${plain}"
-if [ ! -d "/root/nvjdc/.local-chromium/Linux-884014" ]; then
-mkdir nvjdc && cd nvjdc
+apt install git -y || yum install git -y > /dev/null 
+git clone https://ghproxy.com/https://github.com/NolanHzy/nvjdcdocker.git /root/nolanjdc
+if [ ! -d "/root/nolanjdc/.local-chromium/Linux-884014" ]; then
+cd nolanjdc
 echo -e "${green}正在拉取chromium-browser-snapshots,体积100多M，请耐心等待下一步命令提示···${plain}"
 mkdir -p  .local-chromium/Linux-884014 && cd .local-chromium/Linux-884014
-wget http://npm.taobao.org/mirrors/chromium-browser-snapshots/Linux_x64/884014/chrome-linux.zip > /dev/null 2>&1 
-unzip chrome-linux.zip > /dev/null 2>&1 
-rm  -f chrome-linux.zip > /dev/null 2>&1 
+wget http://npm.taobao.org/mirrors/chromium-browser-snapshots/Linux_x64/884014/chrome-linux.zip 
+unzip chrome-linux.zip 
+rm  -f chrome-linux.zip 
 fi
-cd /root/nvjdc
+cd /root/nolanjdc
+mkdir /root/nolanjdc/Config
+clear
 read -p "请输入青龙服务器在web页面中显示的名称: " QLName && printf "\n"
 read -p "请输入nvjdc面板标题: " title && printf "\n"
 read -p "请输入nvjdc面板希望使用的端口号: " jdcport && printf "\n"
@@ -175,12 +183,14 @@ read -p "nvjdc是否对接青龙，输入y或者n " jdcqinglong && printf "\n"
 read -p "请输入青龙OpenApi Client ID: " ClientID && printf "\n"
 read -p "请输入青龙OpenApi Client Secret: " ClientSecret && printf "\n"
 read -p "请输入青龙服务器的url地址（类似http://192.168.2.2:5700）: " QLurl && printf "\n"
-cat > /root/nvjdc/Config.json << EOF
+cat > /root/nolanjdc/Config/Config.json << EOF
 {
   ///浏览器最多几个网页
   "MaxTab": "4",
   //网站标题
   "Title": "${title}",
+  //回收时间分钟 不填默认3分钟
+  "Closetime": "5",
   //网站公告
   "Announcement": "本项目脚本收集于互联网。为了您的财产安全，请关闭京东免密支付。",
   ///XDD PLUS Url  http://IP地址:端口/api/login/smslogin
@@ -205,15 +215,18 @@ cat > /root/nvjdc/Config.json << EOF
       "QRurl": ""
     }
   ]
+
 }
 EOF
 else
-cat > /root/nvjdc/Config.json << EOF
+cat > /root/nolanjdc/Config/Config.json << EOF
 {
   ///浏览器最多几个网页
   "MaxTab": "4",
   //网站标题
   "Title": "${title}",
+  //回收时间分钟 不填默认3分钟
+  "Closetime": "5",
   //网站公告
   "Announcement": "本项目脚本收集于互联网。为了您的财产安全，请关闭京东免密支付。",
   ///XDD PLUS Url  http://IP地址:端口/api/login/smslogin
@@ -222,21 +235,17 @@ cat > /root/nvjdc/Config.json << EOF
   "XDDToken": "${XDDToken}",
   ///青龙配置 注意 如果不要青龙  Config :[]
   "Config": []
+
 }
 EOF
 fi
 read -p "请输入自动滑块次数 直接回车默认5次后手动滑块 输入0为默认手动滑块: " AutoCaptcha && printf "\n"
-	if [ ! -n "$AutoCaptcha" ];then
-    sed -i "5a \        \"AutoCaptchaCount\": \"5\"," /root/nvjdc/Config.json
+  if [ ! -n "$AutoCaptcha" ];then
+    sed -i "7a \        \"AutoCaptchaCount\": \"5\"," /root/nolanjdc/Config/Config.json
 else
-    sed -i "5a \        \"AutoCaptchaCount\": \"${AutoCaptcha}\"," /root/nvjdc/Config.json
+    sed -i "7a \        \"AutoCaptchaCount\": \"${AutoCaptcha}\"," /root/nolanjdc/Config/Config.json
 fi
-read -p "请输入要安装的nvjdc版本，如安装最新版直接回车: " version && printf "\n"
-	if [ ! -n "${version}" ];then
-    version1=latest 
-else
-    version1=${version}
-fi
+
 
 
 #判断机器是否安装docker
@@ -248,14 +257,14 @@ fi
 
 #拉取nvjdc镜像
 echo -e  "${green}开始拉取nvjdc镜像文件，nvjdc镜像比较大，请耐心等待${plain}"
-docker pull nolanhzy/nvjdc:${version1}
+docker pull nolanhzy/nvjdc:latest
 
 
 #创建并启动nvjdc容器
 echo -e "${green}开始创建nvjdc容器${plain}"
-docker run   --name nvjdc -p ${jdcport}:80 -d  -v  "$(pwd)"/Config.json:/app/Config/Config.json:ro \
--v "$(pwd)"/.local-chromium:/app/.local-chromium  \
--it --privileged=true  nolanhzy/nvjdc:${version1}
+docker run   --name nvjdc -p ${jdcport}:80 -d  -v  "$(pwd)":/app \
+-v /etc/localtime:/etc/localtime:ro \
+-it --privileged=true  nolanhzy/nvjdc:latest
 docker update --restart=always nvjdc
 
 baseip=$(curl -s ipip.ooo)  > /dev/null
@@ -265,35 +274,58 @@ echo -e "${green}京豆羊毛脚本仓库监控频道：${plain}${red}https://t.
 }
 
 update_nvjdc(){
-  cd /root/nvjdc
-portinfo=$(docker port nvjdc | head -1  | sed 's/ //g' | sed 's/80\/tcp->0.0.0.0://g')
-condition=$(cat /root/nvjdc/Config.json | grep -o '"XDDurl": .*' | awk -F":" '{print $1}' | sed 's/\"//g')
-AutoCaptcha1=$(cat /root/nvjdc/Config.json | grep -o '"AutoCaptchaCount": .*' | awk -F":" '{print $1}' | sed 's/\"//g')
+  portinfo=$(docker port nvjdc | head -1  | sed 's/ //g' | sed 's/80\/tcp->0.0.0.0://g')
+  docker stop nvjdc
+  apt install git -y || yum install git -y > /dev/null 
+  if [ ! -d "/root/nolanjdc" ];then
+  git clone https://ghproxy.com/https://github.com/NolanHzy/nvjdcdocker.git /root/nolanjdc
+else
+  cd /root/nolanjdc && git pull
+fi
+  if [ ! -f "/root/nvjdc/Config.json" ];then
+    cd /root/nolanjdc
+  else
+    cd /root/nolanjdc &&  mkdir -p  Config &&  mv /root/nvjdc/Config.json /root/nolanjdc/Config/Config.json 
+fi
+if [ ! -d "/root/nvjdc/.local-chromium" ];then
+  cd /root/nolanjdc
+  else  
+  cd /root/nolanjdc && mkdir -p /root/nolanjdc/.local-chromium &&  mv /root/nvjdc/.local-chromium /root/nolanjdc/.local-chromium
+fi
+if [ ! -d "/root/nolanjdc/.local-chromium" ];then
+  mkdir -p /root/nolanjdc/.local-chromium/Linux-884014  && cd /root/nolanjdc/.local-chromium/Linux-884014
+  wget http://npm.taobao.org/mirrors/chromium-browser-snapshots/Linux_x64/884014/chrome-linux.zip
+  unzip chrome-linux.zip
+  rm  -f chrome-linux.zip
+fi
+condition=$(cat /root/nolanjdc/Config/Config.json | grep -o '"XDDurl": .*' | awk -F":" '{print $1}' | sed 's/\"//g')
+AutoCaptcha1=$(cat /root/nolanjdc/Config/Config.json | grep -o '"AutoCaptchaCount": .*' | awk -F":" '{print $1}' | sed 's/\"//g')
 if [ ! -n "$condition" ]; then
 read -p "是否要对接XDD，输入y或者n: " XDD && printf "\n"
 if [[ "$XDD" == "y" ]];then
 read -p "请输入XDD面板地址，格式如http://192.168.2.2:6666/api/login/smslogin : " XDDurl && printf "\n"
 read -p "请输入XDD面板Token: " XDDToken && printf "\n"
-sed -i "7a \          \"XDDurl\": \"${XDDurl}\"," /root/nvjdc/Config.json
-sed -i "7a \        \"XDDToken\": \"${XDDToken}\"," /root/nvjdc/Config.json
+sed -i "7a \          \"XDDurl\": \"${XDDurl}\"," /root/nolanjdc/Config/Config.json
+sed -i "7a \        \"XDDToken\": \"${XDDToken}\"," /root/nolanjdc/Config/Config.json
 fi
 fi
 
 if [ ! -n "$AutoCaptcha1" ];then
-	read -p "请输入自动滑块次数 直接回车默认5次后手动滑块 输入0为默认手动滑块: " AutoCaptcha && printf "\n"
-	if [ ! -n "$AutoCaptcha" ];then
-    sed -i "5a \        \"AutoCaptchaCount\": \"5\"," /root/nvjdc/Config.json
+  read -p "请输入自动滑块次数 直接回车默认5次后手动滑块 输入0为默认手动滑块: " AutoCaptcha && printf "\n"
+  if [ ! -n "$AutoCaptcha" ];then
+    sed -i "5a \        \"AutoCaptchaCount\": \"5\"," /root/nolanjdc/Config/Config.json
 else
-    sed -i "5a \        \"AutoCaptchaCount\": \"${AutoCaptcha}\"," /root/nvjdc/Config.json
+    sed -i "5a \        \"AutoCaptchaCount\": \"${AutoCaptcha}\"," /root/nolanjdc/Config/Config.json
 fi
 fi
 baseip=$(curl -s ipip.ooo)  > /dev/null
-docker rm -f nvjdc
-docker pull nolanhzy/nvjdc:latest
-docker run   --name nvjdc -p ${portinfo}:80 -d  -v  "$(pwd)"/Config.json:/app/Config/Config.json:ro \
--v "$(pwd)"/.local-chromium:/app/.local-chromium  \
--it --privileged=true  nolanhzy/nvjdc:latest
-docker update --restart=always nvjdc
+
+#docker pull nolanhzy/nvjdc:latest
+#docker run   --name nvjdc -p ${portinfo}:80 -d -v  "$(pwd)":/app \
+#-v /etc/localtime:/etc/localtime:ro \
+#-it --privileged=true  nolanhzy/nvjdc:latest
+#docker update --restart=always nvjdc
+docker restart nvjdc
 echo -e "${green}nvjdc更新完毕，脚本自动退出。${plain}"
 echo -e "${green}面板访问地址：http://${baseip}:${portinfo}${plain}"
 echo -e "${green}京豆羊毛脚本仓库监控频道：${plain}${red}https://t.me/farmercoin${plain}"
@@ -302,7 +334,7 @@ exit 0
 
 uninstall_nvjdc(){
 docker rm -f nvjdc
-rm -rf /root/nvjdc
+rm -rf /root/nolanjdc
 echo -e "${green}nvjdc面板已卸载，脚本自动退出，请手动删除nvjdc的镜像。${plain}"
 exit 0
 }
@@ -315,7 +347,7 @@ ${green}2.${plain} 升级nvjdc
 ${green}3.${plain} 卸载nvjdc
 "
 get_system_info
-echo -e "当前系统信息: ${Font_color_suffix}$opsy ${Green_font_prefix}$virtual${Font_color_suffix} $arch ${Green_font_prefix}$kern${Font_color_suffix}
+echo -e "当前系统信息: ${green}$opsy $virtual $arch $kern${plain}
 "
 
   read -p "请输入数字 :" num
@@ -328,7 +360,7 @@ echo -e "当前系统信息: ${Font_color_suffix}$opsy ${Green_font_prefix}$virt
     ;;
   2)
     update_nvjdc
-    ;;	
+    ;;  
   3)
     uninstall_nvjdc
     ;;    
@@ -340,7 +372,5 @@ echo -e "当前系统信息: ${Font_color_suffix}$opsy ${Green_font_prefix}$virt
     ;;
   esac
 }
-
 copyright
-
 menu
