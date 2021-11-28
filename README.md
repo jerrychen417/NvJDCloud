@@ -14,7 +14,7 @@ https://github.com/ufuckee/jd_cookie
 ## 安装教程   
 
 ## 方式一
-# 小白一键快捷启动
+# 小白一键快捷启动  或者 * [dockr 部署](#1)
 运行脚本，按提示输入自己的参数即可
 
 ```
@@ -24,7 +24,7 @@ bash <(curl -sL https://git.io/JXpK0)
 ## 方式二
 # docker安装教程
 
-如果你是装过NVjdc 先看看后面1.2以前如何更新至1.2升级说明
+如果你是装过NVjdc 先看看后面  * [1.2以前如何更新至1.2](#2) 升级说明
 
 1、拉源码
 国内
@@ -109,7 +109,7 @@ docker logs -f nolanjdc
 出现 NETJDC  started 即可 
 
 
-## 1.2以前如何更新之1.2
+## <h2 id="2">1.2以前如何更新至1.2</h2>
 如果你是装过NVjdc 并且root下存在nolanjdc 文件夹
 
 并且你的浏览器和配置已经在/root/nolanjdc文件下了
@@ -166,7 +166,7 @@ docker start nolanjdc
 ```
 
 
-### 1.1及以下 docker 版本安装
+# <h2 id="1">1.1及以下 docker 版本安装</h2>
 
 1 拉镜像
 
