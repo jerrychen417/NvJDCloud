@@ -27,19 +27,20 @@ bash <(curl -sL https://git.io/JXpK0)
 如果你是装过旧版本 nvjdc 先看看后面  * [1.2以前如何更新至1.2](#2) 升级说明
 
 1、拉源码
+
 国内
 ```
-git clone https://ghproxy.com/https://github.com/King-stark/NvJDCLOUD.git /root/nolanjdc
+git clone https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 ```
 国外
 ```
-git clone https://github.com/King-stark/NvJDCLOUD.git /root/nolanjdc
+git clone https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 ```
-
 
 2、拉取基础镜像以后不需要拉取镜像了 如果需要拉取我会通知
+
 ```
-sudo docker pull nolanhzy/nvjdc:latest
+docker pull nolanhzy/nvjdc:latest
 ```
 
 3、执行命令
@@ -51,26 +52,26 @@ yum install wget unzip -y
 4、创建一个目录放配置
 
 ```
- cd /root/nolanjdc
+cd nvjdc
 ```
 ```
 mkdir -p  Config && cd Config
 ```
 
-5、下载config.json 配置文件 并且修改自己的配置 不能缺少
+5、下载Config.json 配置文件 并且修改自己的配置 不能缺少
 
-```doc
-wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCLOUD/doc/Config.json
+```
+wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
 ```
 国内请使用
  ```
-wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCLOUD/doc/Config.json
+wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
 ```
 
-6、回到nolanjdc目录创建chromium文件夹并进入
+6、回到 nvjdc 目录创建chromium文件夹并进入
 
 ```
-cd /root/nolanjdc && mkdir -p  .local-chromium/Linux-884014 && cd .local-chromium/Linux-884014
+cd ~/nvjdc && mkdir -p  .local-chromium/Linux-884014 && cd .local-chromium/Linux-884014
 ```
 
 7、下载 chromium 
@@ -85,17 +86,17 @@ wget https://mirrors.huaweicloud.com/chromium-browser-snapshots/Linux_x64/884014
 rm  -f chrome-linux.zip
 ```
 
-9、回到刚刚创建的目录
+9、回到nvjdc主目录
 
 ```
-cd  /root/nolanjdc
+cd  ~/nvjdc
 ```
 
 
 10、启动镜像
 
 ```
-sudo docker run   --name nolanjdc -p 5701:80 -d  -v  "$(pwd)":/app \
+docker run   --name nvjdc -p 5701:80 -d  -v  "$(pwd)":/app \
 -v /etc/localtime:/etc/localtime:ro \
 -it --privileged=true  nolanhzy/nvjdc:latest
 ```
@@ -103,42 +104,41 @@ sudo docker run   --name nolanjdc -p 5701:80 -d  -v  "$(pwd)":/app \
 11、查看 日志 
 
 ```
-docker logs -f nolanjdc 
+docker logs -f nvjdc
 ```
 
 出现 NETJDC  started 即可 
 
 
 ## <h2 id="2">1.2以前如何更新至1.2</h2>
-如果你是装过NVjdc 并且root下存在nolanjdc 文件夹
+如果你是装过NVjdc 并且存在nolanjdc 文件夹
 
-并且你的浏览器和配置已经在/root/nolanjdc文件下了
+并且你的浏览器和配置已经在nolanjdc文件夹下了
 
-
-请你将你现有的/root/nolanjdc更换名称 如nolanjdcdb
+请你将你现有的nolanjdc更换名称 如nolanjdcdb
 ```
-mv /root/nolanjdc /root/nolanjdcdb
+mv ~/nolanjdc /root/nolanjdcdb
 ```
 
 然后执行步骤一 拉取代码
 国内
 ```
-git clone https://ghproxy.com/https://github.com/NolanHzy/nvjdcdocker.git /root/nolanjdc
+git clone https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 ```
 国外
 ```
-git clone https://github.com/NolanHzy/nvjdcdocker.git /root/nolanjdc
+git clone https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 ```
 
 
-然后将刚刚更换名称文件夹 如nolanjdcdb中的 配置文件放到/root/nolanjdc/Config 文件夹中
+然后将刚刚更换名称文件夹 如nolanjdcdb中的 配置文件放到nvjdc/Config 文件夹中
 ```
- cd /root/nolanjdc &&  mkdir -p  Config &&  mv /root/nolanjdcdb/Config.json /root/nolanjdc/Config/Config.json
+ cd ~/nvjdc &&  mkdir -p  Config &&  mv ~/nolanjdcdb/Config.json ~/nvjdc/Config/Config.json
 ```
 
-将刚刚更换名称文件夹 如nolanjdcdb 中的浏览器所有文件放到/root/nolanjdc/.local-chromium/Linux-884014 文件夹中
+将刚刚更换名称文件夹 如nolanjdcdb 中的浏览器所有文件放到~/nvjdc/.local-chromium/Linux-884014 文件夹中
 ```
- cd /root/nolanjdc &&    mv /root/nolanjdcdb/.local-chromium /root/nolanjdc/.local-chromium
+ cd ~/nvjdc &&  mv ~/nolanjdcdb/.local-chromium ~/nvjdc/.local-chromium
 ```
 
 删除容器
@@ -153,16 +153,16 @@ docker rm -f nolanjdc
 ## 更新
 
 ```
-cd /root/nolanjdc
+cd ~/nvjdc
 ```
 ```
-docker stop nolanjdc
+docker stop nvjdc
 ```
 ```
 git pull
 ```
 ```
-docker start nolanjdc
+docker start nvjdc
 ```
 
 
@@ -170,12 +170,11 @@ docker start nolanjdc
 
 1 拉镜像
 
-
 ```
-sudo docker pull clearloves/nvjdc:1.1
+sudo docker pull clearloves/nvjdc:1.1   --（输入选择想要的 tar ）
 ```
 
-2 启动镜像
+2 部署容器
 
 ```
 sudo docker run -dit \
@@ -187,6 +186,18 @@ sudo docker run -dit \
   --hostname nvjdc \
   --restart always \
   nolanhzy/nvjdc:1.1
+```
+3、下载config.json 配置文件 并且修改自己的配置 不能缺少
+
+```
+cd ~/nvjdc/Config
+```
+```
+wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
+```
+国内请使用
+```
+wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
 ```
 
 3 查看 日志
