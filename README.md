@@ -22,7 +22,7 @@ https://github.com/ufuckee/jd_cookie
 bash <(curl -sL https://git.io/JXpK0)
 ```
 
-## 1.2及之后版本安装
+# 1.2及之后版本安装
 
 如果你是装过旧版本 nvjdc 先看看后面  * [1.2以前如何更新至1.2](#2) 升级说明
 
