@@ -3,21 +3,18 @@
 Net core5  vue3 puppeteer sharp的一次尝试
 
 ## 提示
-#cp 
+
 Third party extension interface for sillyGirl.
 https://github.com/ufuckee/jd_cookie
 
-我自己的环境是centos x86
-
-默认自动五次滑块
+环境：centos x86
 
 ## 就是个文档，请不要Fork
-
 
 ## 安装教程   
 
 ## 方式一
-# 小白一键启动
+# 小白一键快捷启动
 运行脚本，按提示输入自己的参数即可
 
 ```
@@ -25,71 +22,160 @@ bash <(curl -sL https://git.io/JXpK0)
 ```
 
 ## 方式二
+# docker安装教程
 
-1 执行命令
+如果你是装过NVjdc 先看看后面1.2以前如何更新至1.2升级说明
 
+1、拉源码
+国内
 ```
-sudo yum install wget unzip -y
+git clone https://ghproxy.com/https://github.com/King-stark/NvJDCLOUD.git /root/nolanjdc
 ```
-
-2 创建一个目录放配置以及chromium
-
+国外
 ```
-mkdir -p nvjdc/Config && cd nvjdc/Config
-```
-
-3 下载config.json 配置文件 并且修改自己的配置 不能缺少
-
-```
-#国外机
-wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/main/Config.json
-#国内机
-wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/main/Config.json
-```
-配置文件大家根据自己的更改。
-
-4 创建子文件夹 .local-chromium，再新建子文件夹Linux-884014 （注意都是文件夹下层）
-
-```
-cd ..
-mkdir -p  .local-chromium/Linux-884014 && cd .local-chromium/Linux-884014
+git clone https://github.com/King-stark/NvJDCLOUD.git /root/nolanjdc
 ```
 
-5 下载 chromium 并解压
 
-```
-#国内机
-wget https://mirrors.huaweicloud.com/chromium-browser-snapshots/Linux_x64/884014/chrome-linux.zip && unzip chrome-linux.zip
-#国外机
-weget https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux_x64%2F884014%2Fchrome-linux.zip?generation=1621365407176850&alt=media && unzip Linux_x64_884014_chrome-linux.zip
-```
-
-6 删除刚刚下载的压缩包
-
-```
-rm  -f chrome-linux.zip or Linux_x64_884014_chrome-linux.zip
-```
-
-7 回到用户目录
-
-```
-cd .. && cd .. && cd ..
-```
-
-8 拉镜像
-
- 持续更新
-
+2、拉取基础镜像以后不需要拉取镜像了 如果需要拉取我会通知
 ```
 sudo docker pull nolanhzy/nvjdc:latest
 ```
-or 备份版
+
+3、执行命令
 
 ```
-sudo docker pull aaronyyds/nvjdc:(仅支持0.8+版本，自行选择）
+yum install wget unzip -y
 ```
 
-9 启动镜像
+4、创建一个目录放配置
+
+```
+ cd /root/nolanjdc
+```
+```
+mkdir -p  Config && cd Config
+```
+
+5、下载config.json 配置文件 并且修改自己的配置 不能缺少
+
+```doc
+wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCLOUD/doc/Config.json
+```
+国内请使用
+ ```
+wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCLOUD/doc/Config.json
+```
+
+6、回到nolanjdc目录创建chromium文件夹并进入
+
+```
+cd /root/nolanjdc && mkdir -p  .local-chromium/Linux-884014 && cd .local-chromium/Linux-884014
+```
+
+7、下载 chromium 
+
+```
+wget https://mirrors.huaweicloud.com/chromium-browser-snapshots/Linux_x64/884014/chrome-linux.zip && unzip chrome-linux.zip
+```
+
+8、删除刚刚下载的压缩包 
+
+```
+rm  -f chrome-linux.zip
+```
+
+9、回到刚刚创建的目录
+
+```
+cd  /root/nolanjdc
+```
+
+
+10、启动镜像
+
+```
+sudo docker run   --name nolanjdc -p 5701:80 -d  -v  "$(pwd)":/app \
+-v /etc/localtime:/etc/localtime:ro \
+-it --privileged=true  nolanhzy/nvjdc:latest
+```
+
+11、查看 日志 
+
+```
+docker logs -f nolanjdc 
+```
+
+出现 NETJDC  started 即可 
+
+
+## 1.2以前如何更新之1.2
+如果你是装过NVjdc 并且root下存在nolanjdc 文件夹
+
+并且你的浏览器和配置已经在/root/nolanjdc文件下了
+
+
+请你将你现有的/root/nolanjdc更换名称 如nolanjdcdb
+```
+mv /root/nolanjdc /root/nolanjdcdb
+```
+
+然后执行步骤一 拉取代码
+国内
+```
+git clone https://ghproxy.com/https://github.com/NolanHzy/nvjdcdocker.git /root/nolanjdc
+```
+国外
+```
+git clone https://github.com/NolanHzy/nvjdcdocker.git /root/nolanjdc
+```
+
+
+然后将刚刚更换名称文件夹 如nolanjdcdb中的 配置文件放到/root/nolanjdc/Config 文件夹中
+```
+ cd /root/nolanjdc &&  mkdir -p  Config &&  mv /root/nolanjdcdb/Config.json /root/nolanjdc/Config/Config.json
+```
+
+将刚刚更换名称文件夹 如nolanjdcdb 中的浏览器所有文件放到/root/nolanjdc/.local-chromium/Linux-884014 文件夹中
+```
+ cd /root/nolanjdc &&    mv /root/nolanjdcdb/.local-chromium /root/nolanjdc/.local-chromium
+```
+
+删除容器
+```
+docker rm -f nolanjdc 
+```
+然后从步骤9开始即可
+
+后续更新只需要按照下方代码更新即可
+
+
+## 更新
+
+```
+cd /root/nolanjdc
+```
+```
+docker stop nolanjdc
+```
+```
+git pull
+```
+```
+docker start nolanjdc
+```
+
+
+### 1.1及以下 docker 版本安装
+
+1 拉镜像
+
+
+```
+sudo docker pull clearloves/nvjdc:1.1
+```
+
+2 启动镜像
 
 ```
 sudo docker run -dit \
@@ -100,10 +186,10 @@ sudo docker run -dit \
   --name nvjdc \
   --hostname nvjdc \
   --restart always \
-  nolanhzy/nvjdc:latest
+  nolanhzy/nvjdc:1.1
 ```
 
-10 查看 日志
+3 查看 日志
 
 ```
 docker logs -f nvjdc 
@@ -114,6 +200,12 @@ docker logs -f nvjdc
 
 ## 更新
 
+停止容器
+
+```
+docker stop nvjdc 
+```
+
 删除容器
 
 ```
@@ -123,17 +215,10 @@ docker rm -f nvjdc
 删除镜像
 
 ```
-docker rmi -f nolanhzy/nvjdc:latest
+docker rmi -f nolanhzy/nvjdc:1.1   --（输入选择想要的 tar ）
 ```
 
-进入你以前下载过 Config.json 配置的文件夹中
-如原来在 root 下 nvjdc 文件夹中
-
-```
-cd /root/nvjdc 
-```
-
-然后重复后续步骤即可
+然后重复上面步骤即可
 
 ## 注意事项
 
@@ -147,8 +232,8 @@ Config.json 是配置文件 可以热更新 修改后不用重启容器
 原作 Nolanhzy
 https://hub.docker.com/r/nolanhzy/nvjdc
 
-备份 aaronyyds (0.8+)
-https://hub.docker.com/r/aaronyyds/nvjdc
+备份 aaronyyds
+https://hub.docker.com/r/clearloves/nvjdc
 
 
 
@@ -156,7 +241,7 @@ https://hub.docker.com/r/aaronyyds/nvjdc
 
 * 本仓库涉仅用于测试和学习研究，禁止用于商业用途，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断.
 * 本项目内所有资源文件，禁止任何公众号、自媒体进行任何形式的转载、发布。
-* Nolan对任何代码问题概不负责，包括但不限于由任何脚本错误导致的任何损失或损害.
+* 本人对任何代码问题概不负责，包括但不限于由任何脚本错误导致的任何损失或损害.
 * 间接使用本仓库搭建的任何用户，包括但不限于建立VPS或在某些行为违反国家/地区法律或相关法规的情况下进行传播, Nolan对于由此引起的任何隐私泄漏或其他后果概不负责.
 * 请勿将本项目的任何内容用于商业或非法目的，否则后果自负.
 * 如果任何单位或个人认为该项目的脚本可能涉嫌侵犯其权利，则应及时通知并提供身份证明，所有权证明，我们将在收到认证文件后删除相关代码.
