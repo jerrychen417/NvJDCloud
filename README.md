@@ -16,7 +16,7 @@ https://github.com/ufuckee/jd_cookie
 # 1.2之前版本安装
 
 ## 小白一键快捷启动docker方式的最后版本 $ 1.1  或者  [dockr 部署](#1)
-运行脚本，按提示输入自己的参数即可
+root 运行脚本，按提示输入自己的参数即可
 
 ```
 bash <(curl -sL https://git.io/JMWTL)
