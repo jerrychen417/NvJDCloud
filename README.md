@@ -30,11 +30,11 @@ bash <(curl -sL https://git.io/JXpK0)
 
 国内
 ```
-git clone https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc
+git clone -b main https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 ```
 国外
 ```
-git clone https://github.com/King-stark/NvJDCloud.git ~/nvjdc
+git clone -b main https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 ```
 
 2、拉取基础镜像以后不需要拉取镜像了 如果需要拉取我会通知
@@ -65,7 +65,7 @@ wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/
 ```
 国内请使用
  ```
-wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
+wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
 ```
 
 6、回到 nvjdc 目录创建chromium文件夹并进入
@@ -123,11 +123,11 @@ mv ~/nolanjdc /root/nolanjdcdb
 然后执行步骤一 拉取代码
 国内
 ```
-git clone https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc
+git clone -b main https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 ```
 国外
 ```
-git clone https://github.com/King-stark/NvJDCloud.git ~/nvjdc
+git clone -b main https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 ```
 
 
