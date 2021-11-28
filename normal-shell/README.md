@@ -1,5 +1,8 @@
 # **个人常使用的一些脚本集合**
-
+VPS多功能一键脚本
+```shell
+wget -N --no-check-certificate https://raw.githubusercontent.com/wxfyes/bt/master/kuaijie.sh && bash kuaijie.sh
+```
 一键回程路由查看脚本（兼容ARM架构）：
 ```shell
 bash <(curl -L -s https://raw.githubusercontent.com/King-stark/normal-shell/backup/backup/autoBestTrace.sh)
