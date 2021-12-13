@@ -225,90 +225,90 @@ docker start nvjdc
 
 国内
 ```
-git clone -b main https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc
+git clone -b main https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc 
 ```
 国外
 ```
-git clone -b main https://github.com/King-stark/NvJDCloud.git ~/nvjdc
+git clone -b main https://github.com/King-stark/NvJDCloud.git ~/nvjdc 
 ```
 
 2、拉取基础镜像
 
 ```
-docker pull nolanhzy/nvjdccaptcha:arm
+docker pull nolanhzy/nvjdccaptcha:arm 
 ```
 
 3、运行基础镜像
 
 ```
-docker run   --name nvjdccaptcha -p 5703:5000  --restart=always  -d   -it --privileged=true  nolanhzy/nvjdccaptcha:arm   
+docker run   --name nvjdccaptcha -p 5703:5000  --restart=always  -d   -it --privileged=true  nolanhzy/nvjdccaptcha:arm 
 ```
 
 4、安装chromium-browser
 
 ```
-apt-get install  chromium-browser
+apt-get install  chromium-browser 
 ```
 
 5、创建一个目录放配置
 ```
-cd ~/nvjdc
+cd ~/nvjdc 
 ```
 ```
-mkdir -p  Config && cd Config
+mkdir -p  Config && cd Config 
 ```
 
 6、下载Config.json 配置文件 注意ARM多一个配置 Captchaurl 修改自己的配置
 ```
-wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Arm_Config.json
+wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Arm_Config.json 
 ```
 国内请使用
  ```
-wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Arm_Config.json
+wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Arm_Config.json 
 ```
 
 7、下载NET5.sh
 ```
- cd ~/nolanjdc && wget https://dot.net/v1/dotnet-install.sh && chmod 777 dotnet-install.sh
+ cd ~/nolanjdc && wget https://dot.net/v1/dotnet-install.sh && chmod 777 dotnet-install.sh 
 ```
 
 8、下载NET5
 ```
-./dotnet-install.sh -c 5.0
+./dotnet-install.sh -c 5.0 
 ```
 
 9、设置 path
 ```
-export PATH="$PATH:$HOME/.dotnet"
+export PATH="$PATH:$HOME/.dotnet" 
 ```
 10、启动
 ```
-nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
+nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64 
 ```
 
 ## <h2 id="6">Arm版更新</h2>
 查询占用5701的端口进程  如果你的nvjdc是5701就查询 5701
 ```
-netstat -lnp|grep 5701
+netstat -lnp|grep 5701 
 ```
 假如显示如下内容
 tcp6       0      0 :::5701                 :::*                    LISTEN      680536/dotnet  
 
 杀死进程
 ```
-kill -9 680536
+kill -9 680536 
 ```
 ```
 cd /root/nolanjdc
 ```
 ```
-git pull
+git pull 
 ```
 ```
-export PATH="$PATH:$HOME/.dotnet"
+export PATH="$PATH:$HOME/.dotnet" 
 ```
 ```
-nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
+nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64 
 ```
 # <h2 id="7">Windows安装教程</h2>
 
