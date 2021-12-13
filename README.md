@@ -241,18 +241,19 @@ docker pull nolanhzy/nvjdccaptcha:arm
 3、运行基础镜像
 
 ```
-docker run   --name nvjdccaptcha -p 5703:5000  --restart=always  -d   -it --privileged=true  nolanhzy/nvjdccaptcha:arm  
+docker run   --name nvjdccaptcha -p 5703:5000  --restart=always  -d   -it --privileged=true  nolanhzy/nvjdccaptcha:arm   
 ```
 
 4、安装chromium-browser
 
 ```
-apt-get install  chromium-browser 
+apt-get install  chromium-browser   
 ```
 
 5、创建一个目录放配置
 ```
-cd ~/nvjdc 
+cd ~/nvjdc
+
 ```
 ```
 mkdir -p  Config && cd Config 
