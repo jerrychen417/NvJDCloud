@@ -1,15 +1,15 @@
 {
-  ///最大支持几个网页
-  "MaxTab": "10",
+  //////浏览器最多支持打开几个网页
+  "MaxTab": "8",
   //网站标题
   "Title": "NolanJDCloud",
   //回收时间分钟 不填默认3分钟
   "Closetime": "3",
   //网站公告
   "Announcement": "本项目脚本收集于互联网。为了您的财产安全，请关闭京东免密支付。",
-  ///开启打印等待日志卡短信验证登陆 可开启 拿到日志群里回复 默认不要填写
+  ///开启打印等待日志卡短信验证登陆 可开启 拿到日志群里回复 默认不要填写 开启输入 1
   "Debug": "",
-  ///自动滑块次数5次 5次后手动滑块 可设置为0默认手动滑块
+  ///自动滑块次数5次 5次失败后手动滑块 可设置为0默认手动滑块
   "AutoCaptchaCount": "5",
   ///XDD PLUS Url  http://IP地址:端口/api/login/smslogin
   "XDDurl": "",
@@ -20,7 +20,7 @@
   "PUSH_PLUS_TOKEN": "",
   //下方填写您的一对多推送的 "群组编码" ，（一对多推送下面->您的群组(如无则新建)->群组编码）
   "PUSH_PLUS_USER": "",
-  ///青龙配置  注意对接XDD 对接芝士 设置为"Config":[]
+  ///青龙配置  注意对接XDD 对接傻妞芝士 设置为"Config":[]
   "Config": [
     {
       //容器1
@@ -34,8 +34,8 @@
       "QL_CLIENTID": "",
       //青龙2,9 OpenApi Client Secret
       "QL_SECRET": "",
-      //青龙面包最大ck容量
-      "QL_CAPACITY": 45,
+      //青龙面板最大ck容量
+      "QL_CAPACITY": 80,
       //消息推送二维码
       "QRurl":""
     },{
@@ -50,7 +50,7 @@
       //青龙2,9 OpenApi Client Secret
       "QL_SECRET": "",
       //青龙面包最大ck容量
-      "QL_CAPACITY": 45,
+      "QL_CAPACITY": 80,
       //消息推送二维码
       "QRurl":""
     }
