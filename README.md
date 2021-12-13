@@ -225,7 +225,7 @@ docker start nvjdc
 
 国内
 ```
-git clone -b main https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc 
+git clone -b main https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc  
 ```
 国外
 ```
@@ -241,7 +241,7 @@ docker pull nolanhzy/nvjdccaptcha:arm
 3、运行基础镜像
 
 ```
-docker run   --name nvjdccaptcha -p 5703:5000  --restart=always  -d   -it --privileged=true  nolanhzy/nvjdccaptcha:arm 
+docker run   --name nvjdccaptcha -p 5703:5000  --restart=always  -d   -it --privileged=true  nolanhzy/nvjdccaptcha:arm  
 ```
 
 4、安装chromium-browser
