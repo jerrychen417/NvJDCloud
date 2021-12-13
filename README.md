@@ -299,7 +299,7 @@ tcp6       0      0 :::5701                 :::*                    LISTEN      
 kill -9 680536
 ```
 ```
-cd /root/nolanjdc
+cd ~/nvjdc
 ```
 ```
 git pull
