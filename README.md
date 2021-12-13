@@ -269,7 +269,7 @@ wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-
 
 7、下载NET5.sh
 ```
- cd ~/nolanjdc && wget https://dot.net/v1/dotnet-install.sh && chmod 777 dotnet-install.sh
+ cd ~/nvjdc && wget https://dot.net/v1/dotnet-install.sh && chmod 777 dotnet-install.sh
 ```
 
 8、下载NET5
