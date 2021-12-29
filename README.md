@@ -1,37 +1,74 @@
-# nvjdc安装教程   就是个文档，偶尔更改，请不要Fork
-* > Resources from https://hub.docker.com/r/nolanhzy/nvjdc/tags && https://github.com/NolanHzy/nvjdcdocker
-## 好消息！最新版本的nvjdc支持Arm了,测试环境Ubuntu 20.04.3 LTS
-* 目录 点击跳转你需要的安装方式
-* [Windows安装教程](#7)
-* [1.1及之前纯docker版本安装](#1)
-* [1.1及以前如何升级至新版本](#3)
-* [新版本安装](#2)
-* [新版更新方式](#4)
-* [Arm 安装教程](#5)
-* [Arm 更新方式](#6)
+<div align="center">
+<h1>Nolanjdc：诺兰 安装教程</h1>
+</div>
 
-## 注意事项
-
-容器启动后第一次获取验证码的时候可能卡住刷新一下即可
-
-Config.json 是配置文件 仅1.1及之前版本支持热更新 新版本每次修改后需要重启容器
-
-环境：centos x86 arm
-
-Third party extension interface for sillyGirl.
-https://github.com/ufuckee/jd_cookie
+> _这是个文档，偶尔更改，请不要Fork，项目源自 https://github.com/NolanHzy/nvjdcdocker && https://hub.docker.com/r/nolanhzy/nvjdc/tags_ </br>
+> _Third party extension interface for sillyGirl.https://github.com/ufuckee/jd_cookie_
 
 
-# 安装教程开始
+## \# 好消息！诺兰 支持Arm了,测试环境Ubuntu 20.04.3 LTS
 
-# <h2 id="1">1.1及之前纯docker版本安装</h2>
+> ***目录 点击跳转查看你需要的安装方式***
 
-## 推荐 小白一键快捷启动 docker方式的最终版本 1.1
+[📢 注意事项](#-注意事项)
+
+[🕹 一键脚本](#-一键脚本)（推荐，最简单的部署方式）
+
+[🍭 Windows安装方式](#-Windows安装方式)
+
+[🚧 Docker 安装方式](#-docker安装方式)（x86 环境选择此安装方式）
+
+[⛵ ARM 版安装方式](#-ARM版安装方式)
+
+[⭕ 更新方式](#-更新方式)
+
+[♻ Arm 版更新方式](#-Arm版更新方式)
+
+## 📢 注意事项
+
+> ***容器启动后第一次获取验证码的时候可能卡住刷新一下即可*** </br>
+> ***Config.json 是配置文件 仅1.1及之前版本支持热更新 后续版本每次修改后需要重启容器生效*** </br>
+测试环境：centos x86 && Ubuntu 20.04.3 LTS arm
+
+## 🕹 一键脚本
+
+>_推荐 纯 docker方式稳定版的最终版本，小白一键快捷启动_
 
 root运行脚本，按提示输入自己的参数即可
+```bash
+bash <(curl -sL https://git.io/JMWTL)
+```
+持续更新版一键脚本   _—by 翔翔_
+```bash
+bash <(curl -sL https://git.io/JP7D5)
+```
+
+## 🍭 Windows安装方式
 
 ```
-bash <(curl -sL https://git.io/JMWTL)
+1、安装ASP.NET Core Runtime 5.0.12
+
+安装地址:https://dotnet.microsoft.com/download/dotnet/5.0
+下载之后无脑下一步
+
+2、下载当前项目源码解压
+
+3、删除NETJDC.deps.json
+
+4、根据自己系统将dll复制根目录即可
+
+  64位
+
+  复制runtimes\win-x64\native\OpenCvSharpExtern.dll到根目录
+
+  32位
+
+  复制runtimes\win-x86\native\OpenCvSharpExtern.dll到根目录
+
+5、启动 
+
+管理员打开CMD CD到源码文件夹中  输入 dotnet NETJDC.dll --urls=http://*:5000
+后面那个是端口可以自己改
 ```
 
 ## 1.1及以下docker版本 命令安装
@@ -311,32 +348,7 @@ export PATH="$PATH:$HOME/.dotnet"
 ```
 nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
 ```
-# <h2 id="7">Windows安装教程</h2>
 
-* 1、安装ASP.NET Core Runtime 5.0.12
-
-安装地址:https://dotnet.microsoft.com/download/dotnet/5.0
-下载之后无脑下一步
-
-* 2、下载当前项目源码解压
-
-* 3、删除NETJDC.deps.json
-
-* 4、根据自己系统将dll复制根目录即可
-
-64位
-
-复制runtimes\win-x64\native\OpenCvSharpExtern.dll到根目录
-
-32位
-
-复制runtimes\win-x86\native\OpenCvSharpExtern.dll到根目录
-
-* 启动 
-
-管理员打开CMD CD到源码文件夹中  输入 dotnet NETJDC.dll --urls=http://*:5000
-
-后面那个是端口可以自己改
  
 
 最后
