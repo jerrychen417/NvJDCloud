@@ -46,7 +46,7 @@ bash <(curl -sL https://git.io/JMWTL)
 bash <(curl -sL https://git.io/JP7D5)
 ```
 
-### \# 纯docker版本稳定版的最终版（1.1）
+### 纯docker版本稳定版的最终版（1.1）
 
 <details>
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
