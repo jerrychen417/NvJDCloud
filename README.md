@@ -46,7 +46,7 @@ bash <(curl -sL https://git.io/JMWTL)
 bash <(curl -sL https://git.io/JP7D5)
 ```
 
-## 纯docker容器方式的最终版本命令部署
+## \# 纯docker容器方式的最终版本命令部署
 
 <details>
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
@@ -116,7 +116,7 @@ docker logs -f nvjdc
 
 ## 🚧 Docker安装方式
 
-如果你是使用的旧版纯docker版 nvjdc，请查看后面 **[1.1及以前版本如何升级](#-1.1及以前版本如何升级)** 升级说明
+如果你是使用的旧版纯docker版 nvjdc，请查看后面 **[1.1及以前版本如何升级](#-11及以前版本如何升级)** 升级说明
 
 1、拉源码
 
