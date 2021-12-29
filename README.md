@@ -1,4 +1,5 @@
 # nvjdc安装教程   就是个文档，偶尔更改，请不要Fork
+* > Resources from https://hub.docker.com/r/nolanhzy/nvjdc/tags && https://github.com/NolanHzy/nvjdcdocker
 ## 好消息！最新版本的nvjdc支持Arm了,测试环境Ubuntu 20.04.3 LTS
 * 目录 点击跳转你需要的安装方式
 * [Windows安装教程](#7)
