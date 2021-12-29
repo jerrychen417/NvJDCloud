@@ -14,15 +14,18 @@
 
 [🕹 一键脚本](#-一键脚本)（推荐，最简单的部署方式）
 
-[🍭 Windows安装方式](#-Windows安装方式)
+[🍭 Windows 安装方式](#-Windows安装方式)
 
-[🚧 Docker 安装方式](#-docker安装方式)（x86 环境选择此安装方式）
-
-[⛵ ARM 版安装方式](#-ARM版安装方式)
+[🚧 Docker 安装方式](#-Docker安装方式)（x86 环境选择此安装方式）
 
 [⭕ 更新方式](#-更新方式)
 
+[⛵ Arm 版安装方式](#-Arm版安装方式)
+
 [♻ Arm 版更新方式](#-Arm版更新方式)
+
+[🎉 鸣谢](#-鸣谢)
+
 
 ## 📢 注意事项
 
@@ -32,7 +35,7 @@
 
 ## 🕹 一键脚本
 
->_推荐 纯 docker方式稳定版的最终版本，小白一键快捷启动_
+> ***纯docker版本稳定版的最终版，小白一键快捷启动，或者参考下方 [docker命令安装方式](#-纯docker版本稳定版的最终版（1.1）)
 
 root运行脚本，按提示输入自己的参数即可
 ```bash
@@ -42,6 +45,46 @@ bash <(curl -sL https://git.io/JMWTL)
 ```bash
 bash <(curl -sL https://git.io/JP7D5)
 ```
+
+### \# 纯docker版本稳定版的最终版（1.1）
+
+<details>
+<summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
+
+```
+1 拉镜像
+sudo docker pull clearloves/nvjdc:1.1   --（输入选择想要的 tag 仅限1.1及以下，推荐使用一键脚本安装最终版本 1.1 ）
+
+2 部署容器
+
+sudo docker run -dit \
+  -v $PWD/nvjdc/Config:/app/Config \
+  -v $PWD/nvjdc/.local-chromium:/app/.local-chromium \
+  -p 5701:80 \
+  --privileged=true \
+  --name nvjdc \
+  --hostname nvjdc \
+  --restart always \
+  clearloves/nvjdc:1.1
+
+3、下载config.json 配置文件 并且修改为自己的参数 不能缺少
+cd ~/nvjdc/Config
+
+国外服务器
+wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
+
+国内请使用
+wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
+
+3 查看 日志
+docker restart nvjdc
+
+docker logs -f nvjdc 
+
+出现 NETJDC  started 即可
+```
+
+</details>
 
 ## 🍭 Windows安装方式
 
@@ -71,53 +114,9 @@ bash <(curl -sL https://git.io/JP7D5)
 后面那个是端口可以自己改
 ```
 
-## 1.1及以下docker版本 命令安装
+## 🚧 Docker安装方式
 
-1 拉镜像
-
-```
-sudo docker pull clearloves/nvjdc:1.1   --（输入选择想要的 tag 仅限1.1及以下，推荐使用一键脚本安装最终版本 1.1 ）
-```
-
-2 部署容器
-
-```
-sudo docker run -dit \
-  -v $PWD/nvjdc/Config:/app/Config \
-  -v $PWD/nvjdc/.local-chromium:/app/.local-chromium \
-  -p 5701:80 \
-  --privileged=true \
-  --name nvjdc \
-  --hostname nvjdc \
-  --restart always \
-  clearloves/nvjdc:1.1
-```
-3、下载config.json 配置文件 并且修改自己的配置 不能缺少
-
-```
-cd ~/nvjdc/Config
-```
-```
-wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
-```
-国内请使用
-```
-wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
-```
-
-3 查看 日志
-```
-docker restart nvjdc
-```
-```
-docker logs -f nvjdc 
-```
-
-出现 NETJDC  started 即可
-
-# <h2 id="2">新版本安装</h2>
-
-如果你是装过旧版本 nvjdc 先看看后面 [1.1及以前如何升级至新版本](#3) 升级说明
+如果你是使用的旧版纯docker版 nvjdc，请查看后面 **[1.1及以前版本如何升级](#-1.1及以前版本如何升级)** 升级说明
 
 1、拉源码
 
@@ -200,49 +199,48 @@ docker run   --name nvjdc -p 5701:80 -d  -v  "$(pwd)":/app \
 docker logs -f nvjdc
 ```
 
-出现 NETJDC  started 即可 
+出现 NETJDC  started 即成功
 
+***
 
-## <h2 id="3">1.1以前如何升级至新版本</h2>
-如果你是装过Nvjdc 并且存在nolanjdc 或 nvjdc文件夹
+### \# 1.1及以前版本如何升级
+
+<details>
+<summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
+
+```
+如果你是装过老版本 nvjdc 并且存在nolanjdc 或 nvjdc文件夹
 
 并且你的Config.json和chromium已经在nolanjdc 或 nvjdc文件夹下了
 
 请你将你现有的nolanjdc或nvjdc文件夹重命名 如nolanjdcdb,以下均以原文件夹名为nolanjdc演示
-```
 mv ~/nolanjdc ~/nolanjdcdb
-```
-
+  
 然后执行步骤一 拉取代码
+  
 国内
-```
 git clone -b main https://ghproxy.com/https://github.com/King-stark/NvJDCloud.git ~/nvjdc
-```
-国外
-```
-git clone -b main https://github.com/King-stark/NvJDCloud.git ~/nvjdc
-```
 
+国外
+git clone -b main https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 
 然后将刚刚重命名的文件夹 如nolanjdcdb中的Config.json放到nvjdc/Config 文件夹中
-```
- cd ~/nvjdc &&  mkdir -p  Config &&  mv ~/nolanjdcdb/Config.json ~/nvjdc/Config/Config.json
-```
+cd ~/nvjdc &&  mkdir -p  Config &&  mv ~/nolanjdcdb/Config.json ~/nvjdc/Config/Config.json
 
 将刚刚更换名称文件夹 如nolanjdcdb 中的chromium所有文件放到~/nvjdc/.local-chromium/Linux-884014 文件夹中
-```
- cd ~/nvjdc &&  mv ~/nolanjdcdb/.local-chromium ~/nvjdc/.local-chromium
-```
+cd ~/nvjdc &&  mv ~/nolanjdcdb/.local-chromium ~/nvjdc/.local-chromium
 
 删除容器
-```
 docker rm -f nolanjdc
-```
+
 然后从步骤9开始即可
 
 后续更新只需要按照下方代码更新即可
+```
 
-## <h2 id="4">新版本更新方式</h2>
+</details>
+
+## ⭕ 更新方式
 
 ```
 cd ~/nvjdc
@@ -257,7 +255,7 @@ git pull
 docker start nvjdc
 ```
 
-# <h2 id="5">Arm 安装教程</h2>
+## ⛵ Arm版安装方式
 
 1、拉源码
 
@@ -324,7 +322,8 @@ export PATH="$PATH:$HOME/.dotnet"
 nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
 ```
 
-## <h2 id="6">Arm版更新</h2>
+## ♻ Arm版更新方式
+
 查询占用5701的端口进程  如果你的nvjdc是5701就查询 5701
 ```
 netstat -lnp|grep 5701
@@ -349,16 +348,12 @@ export PATH="$PATH:$HOME/.dotnet"
 nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
 ```
 
- 
 
-最后
+## 🎉 鸣谢
 
-鸣谢：
-原作 Nolanhzy
-https://hub.docker.com/r/nolanhzy/nvjdc
+- ***原作 [Nolanhzy](https://github.com/NolanHzy/nvjdcdocker.git)：https://hub.docker.com/r/nolanhzy/nvjdc***
 
-备份 clearloves
-https://hub.docker.com/r/clearloves/nvjdc
+- ***备份 clearloves：https://hub.docker.com/r/clearloves/nvjdc***
 
 
 # 特别声明:
