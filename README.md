@@ -46,7 +46,7 @@ bash <(curl -sL https://git.io/JMWTL)
 bash <(curl -sL https://git.io/JP7D5)
 ```
 
-## \# 纯docker容器方式的最终版本命令部署
+### \# 纯docker容器方式的最终版本命令部署
 
 <details>
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
