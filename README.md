@@ -35,7 +35,7 @@
 
 ## 🕹 一键脚本
 
-> ***纯docker版本稳定版的最终版，小白一键快捷启动，或者参考下方 [docker命令安装方式](#-纯docker版本稳定版的最终版（1.1）)
+> ***纯docker容器方式的最终版本(#1.1)，小白一键快捷启动，或者参考下方 [docker命令安装方式](#-纯docker容器方式的最终版本命令部署)
 
 root运行脚本，按提示输入自己的参数即可
 ```bash
@@ -46,7 +46,7 @@ bash <(curl -sL https://git.io/JMWTL)
 bash <(curl -sL https://git.io/JP7D5)
 ```
 
-### 纯docker版本稳定版的最终版（1.1）
+### 纯docker容器方式的最终版本命令部署
 
 <details>
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
