@@ -321,6 +321,7 @@ export PATH="$PATH:$HOME/.dotnet"
 ```
 nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
 ```
+然后访问 http://你的IP:5701 即可
 
 ## ♻ Arm版更新方式
 
