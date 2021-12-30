@@ -53,6 +53,7 @@ bash <(curl -sL https://git.io/JP7D5)
 
 ***
 ```
+
 1 拉镜像
 sudo docker pull clearloves/nvjdc:1.1   --（输入选择想要的 tag 仅限1.1及以下，推荐使用一键脚本安装最终版本 1.1 ）
 
@@ -83,10 +84,10 @@ docker restart nvjdc
 docker logs -f nvjdc 
 
 出现 NETJDC  started 即可
+
 ```
 ***
 </details>
-
 
 ## 🍭 Windows安装方式
 
