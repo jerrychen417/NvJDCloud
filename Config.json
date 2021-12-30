@@ -11,10 +11,6 @@
   "Debug": "",
   ///自动滑块次数5次 5次失败后手动滑块 可设置为0默认手动滑块
   "AutoCaptchaCount": "5",
-  ///XDD PLUS Url  http://IP地址:端口/api/login/smslogin
-  "XDDurl": "",
-  ///xddToken
-  "XDDToken": "",
   // ======================================== PROXY 代理设置区域 =============================================
   ///Proxy 支持不带密码的socks5 以及http 
   ///http  Proxy 只需要填写 ip:端口
@@ -24,6 +20,11 @@
   "ProxyUser": "",
   //Proxy密码
   "ProxyPass": "",
+  // ======================================== XDD PLUS 设置区域 =============================================
+  ///XDD PLUS Url  http://IP地址:端口/api/login/smslogin
+  "XDDurl": "",
+  ///xddToken
+  "XDDToken": "",
   // =====================================推送服务 需要的取消下方注释 =========================================
   ///登陆预警推送 0 0 12 * * ?  每天中午十二点 https://www.bejson.com/othertools/cron/ 表达式在线生成网址
   ///"ExpirationCron": " 0 0 12 * * ?",
