@@ -35,7 +35,7 @@
 
 ## 🕹 一键脚本
 
-> ***纯docker容器方式的最终版本(#1.1)，小白一键快捷启动，或者参考下方 [进行命令方式安装](#-纯docker容器方式的最终版本命令部署)
+> ***纯docker容器方式的最终版本(#1.1)，小白一键快捷启动，或者参考下方 [命令方式安装](#-纯docker容器方式的最终版本命令部署)
 
 root运行脚本，按提示输入自己的参数即可
 ```bash
@@ -214,7 +214,7 @@ docker logs -f nvjdc
 
 <details>
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
-
+***
 ```
 如果你是装过老版本 nvjdc 并且存在nolanjdc 或 nvjdc文件夹
 
@@ -244,7 +244,7 @@ docker rm -f nolanjdc
 
 后续更新只需要按照下方代码更新即可
 ```
-
+***
 </details>
 
 ## ⭕ 更新方式
