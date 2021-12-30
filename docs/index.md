@@ -50,6 +50,7 @@ bash <(curl -sL https://git.io/JP7D5)
 
 <details>
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
+
 ***
 1 拉镜像
 ```
@@ -88,6 +89,7 @@ docker logs -f nvjdc
 出现 NETJDC  started 即可
 ```
 ***
+
 </details>
 
 ## 🍭 Windows安装方式
