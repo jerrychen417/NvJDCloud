@@ -51,13 +51,13 @@ bash <(curl -sL https://git.io/JP7D5)
 <details>
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
 
-***
+
 1 拉镜像
-```
+
 sudo docker pull clearloves/nvjdc:1.1   --（输入选择想要的 tag 仅限1.1及以下，推荐使用一键脚本安装最终版本 1.1 ）
-```
+
 2 部署容器
-```
+
 sudo docker run -dit \
   -v $PWD/nvjdc/Config:/app/Config \
   -v $PWD/nvjdc/.local-chromium:/app/.local-chromium \
@@ -67,30 +67,29 @@ sudo docker run -dit \
   --hostname nvjdc \
   --restart always \
   clearloves/nvjdc:1.1
-```
+
 3、下载config.json 配置文件 并且修改为自己的参数 不能缺少
-```
+
 cd ~/nvjdc/Config
-```
+
 国外服务器
-```bash
+
 wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
-```
+
 国内请使用
-```shell
+
 wget -O Config.json  https://ghproxy.com/https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Config.json
-```
+
 3 查看 日志
-```
+
 docker restart nvjdc
 
 docker logs -f nvjdc 
 
 出现 NETJDC  started 即可
-```
-***
 
 </details>
+
 
 ## 🍭 Windows安装方式
 
