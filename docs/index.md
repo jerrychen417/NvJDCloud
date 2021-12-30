@@ -214,6 +214,7 @@ docker logs -f nvjdc
 
 <details>
 <summary><code><strong>「 点击展开 查看内容 」</strong></code></summary>
+
 ***
 ```
 如果你是装过老版本 nvjdc 并且存在nolanjdc 或 nvjdc文件夹
@@ -245,6 +246,7 @@ docker rm -f nolanjdc
 后续更新只需要按照下方代码更新即可
 ```
 ***
+
 </details>
 
 ## ⭕ 更新方式
