@@ -294,7 +294,7 @@ cd ~/nvjdc
 mkdir -p  Config && cd Config
 ```
 
-6、下载Config.json 配置文件 注意ARM多一个配置 Captchaurl 修改自己的配置
+6、下载Config.json 配置文件 注意ARM多一个配置 Captchaurl 修改为自己的参数
 ```
 wget -O Config.json  https://raw.githubusercontent.com/King-stark/NvJDCloud/doc/Arm_Config.json
 ```
@@ -356,7 +356,7 @@ nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
 - ***备份 clearloves：https://hub.docker.com/r/clearloves/nvjdc***
 
 
-# 特别声明:
+## 特别声明:
 
 * 本仓库涉仅用于测试和学习研究，禁止用于商业用途，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断.
 * 本项目内所有资源文件，禁止任何公众号、自媒体进行任何形式的转载、发布。
@@ -369,4 +369,4 @@ nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
 **您必须在下载后的24小时内从计算机或手机中完全删除以上内容.**  </br>
 > ***您使用或者复制了本仓库且本人制作的任何脚本，则视为`已接受`此声明，请仔细阅读***
 
-# 多谢
+## 多谢
