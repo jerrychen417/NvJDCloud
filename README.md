@@ -132,7 +132,7 @@ git clone -b main https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 2、拉取基础镜像以后不需要拉取镜像了 如果需要拉取我会通知
 
 ```
-docker pull nolanhzy/nvjdc:latest
+docker pull clearloves/nvjdc:latest
 ```
 
 3、没有wget工具请执行如下命令，否则跳过
@@ -190,7 +190,7 @@ cd  ~/nvjdc
 ```
 docker run   --name nvjdc -p 5701:80 -d  -v  "$(pwd)":/app \
 -v /etc/localtime:/etc/localtime:ro \
--it --privileged=true  nolanhzy/nvjdc:latest
+-it --privileged=true  clearloves/nvjdc:latest
 ```
 
 11、查看 日志 
@@ -271,13 +271,13 @@ git clone -b main https://github.com/King-stark/NvJDCloud.git ~/nvjdc
 2、拉取基础镜像
 
 ```
-docker pull nolanhzy/nvjdccaptcha:arm
+docker pull clearloves/nvjdc:arm
 ```
 
 3、运行基础镜像
 
 ```
-docker run   --name nvjdccaptcha -p 5703:5000  --restart=always  -d   -it --privileged=true  nolanhzy/nvjdccaptcha:arm
+docker run   --name nvjdc -p 5703:5000  --restart=always  -d   -it --privileged=true  clearloves/nvjdc:arm
 ```
 
 4、安装chromium-browser
