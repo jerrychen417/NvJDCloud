@@ -2,7 +2,8 @@
 <h1>Nolanjdc：诺兰 安装教程</h1>
 </div>
 
-> _这是个文档，偶尔更改，请不要Fork，项目源自 https://github.com/NolanHzy/nvjdcdocker && https://hub.docker.com/r/nolanhzy/nvjdc/tags_ </br>
+## \#这是个自用项目文档，请勿传播。
+> _这是个文档，偶尔更改，请不要Fork，项目源已删除，本仓库自用，请勿传播，谢谢！ ~~https://github.com/NolanHzy/nvjdcdocker && https://hub.docker.com/r/nolanhzy/nvjdc/tags~~_ </br>
 > _Third party extension interface for sillyGirl.https://github.com/ufuckee/jd_cookie_
 
 
