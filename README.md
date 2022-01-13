@@ -353,7 +353,7 @@ nohup dotnet NETJDC.dll --urls=http://*:5701 1>"$(pwd)"/log 2>&1 & #ARM64
 
 ## 🎉 鸣谢
 
-- ***原作 [Nolanhzy](https://github.com/NolanHzy/nvjdcdocker.git)：https://hub.docker.com/r/nolanhzy/nvjdc***
+- ***原作 ~~[Nolanhzy](https://github.com/NolanHzy/nvjdcdocker.git)：https://hub.docker.com/r/nolanhzy/nvjdc~~***
 
 - ***备份 clearloves：https://hub.docker.com/r/clearloves/nvjdc***
 
