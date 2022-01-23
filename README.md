@@ -120,6 +120,8 @@ docker logs -f nvjdc
 如果你是使用的旧版纯docker版 nvjdc，请查看后面 **[1.1及以前版本如何升级](#-11及以前版本如何升级)** 升级说明
 
 1、拉源码
+yum install git -y
+apt-get install [git](https://www.bxl.me/b/git/) -y
 
 国内
 ```
